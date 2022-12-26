@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 340214810}
   - component: {fileID: 340214809}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,8 +338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 62.78, y: 19.39}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 138.68, y: 29.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340214809
 MonoBehaviour:
@@ -384,7 +384,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 340214810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1101444752}
+        m_TargetAssemblyTypeName: ResumeGameMenu, Assembly-CSharp
+        m_MethodName: MainMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &340214810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 439003603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1549476870}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &439003603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,7 +1148,7 @@ GameObject:
   - component: {fileID: 971966261}
   - component: {fileID: 971966260}
   m_Layer: 5
-  m_Name: QuitText
+  m_Name: MainMenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1170,7 +1194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: main menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1342,6 +1366,7 @@ GameObject:
   - component: {fileID: 1101444749}
   - component: {fileID: 1101444751}
   - component: {fileID: 1101444750}
+  - component: {fileID: 1101444752}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1410,6 +1435,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101444748}
   m_CullTransparentMesh: 1
+--- !u!114 &1101444752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101444748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff02169ad367c9d47b57bdec5e9df298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1130027888
 GameObject:
   m_ObjectHideFlags: 0

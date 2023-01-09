@@ -7,9 +7,9 @@ using Random = UnityEngine.Random;
 public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstacles;
-    public float spawnRate = 2f;
-    public float miniHeight = -1f;
-    public float maxHeight = 1f;
+    public float spawnRate;
+    public float miniHeight;
+    public float maxHeight;
     
     private void OnEnable()
     {

@@ -20,15 +20,15 @@ public class BirdJump : MonoBehaviour
         }
     }
     
-    private void OnTriggerEnter2D(Collider2D otherCollider)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if(otherCollider.tag == "Obstacle")
+        if (other.gameObject.CompareTag("Obstacle")) 
         {
-            Debug.Log("Game Over");
-            FindObjectOfType<GameManager>().GameOver();
-        }else if (otherCollider.gameObject.tag == "Score")
+            FindObjectOfType<GameManager>().GameOVer();
+        } 
+        else if (other.gameObject.CompareTag("Scoring")) 
         {
-            FindObjectOfType<GameManager>().ScoreCounter();
+            FindObjectOfType<GameManager>().IncreaseScore();
         }
     }
 }

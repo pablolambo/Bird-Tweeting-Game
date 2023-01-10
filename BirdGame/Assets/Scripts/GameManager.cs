@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int score;
-    public void GameOver()
-    {
-        Debug.Log("Game over");
-    }
+    private int score;
 
-    public void ScoreCounter()
+    public void GameOVer()
+    {
+        Debug.Log("Game Over");
+    }
+    public void IncreaseScore()
     {
         score++;
+        Debug.Log(score);
     }
 }

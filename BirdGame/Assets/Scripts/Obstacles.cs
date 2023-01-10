@@ -6,12 +6,12 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     public float speed = 5f;
-    private float leftEdge = -10f;
+    private float leftEdge = -11f;
     private float offset = 1f;
 
     private void Start()
     {
-        leftEdge = Camera.main.ScreenToWorldPoint(new Vector3(-10f, 0f, 0f)).x - offset;
+        leftEdge = Camera.main.ScreenToWorldPoint(new Vector3(-5f, 0f, 0f)).x - offset;
     }
 
     private void Update()
@@ -23,6 +23,4 @@ public class Obstacles : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    
 }

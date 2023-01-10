@@ -47,6 +47,7 @@ public class BackgroundLoop : MonoBehaviour{
             }
         }
     }
+    
     void Update() {
         Vector3 velocity = Vector3.zero;
         Vector3 desiredPosition = transform.position + new Vector3(scrollSpeed, 0, 0);

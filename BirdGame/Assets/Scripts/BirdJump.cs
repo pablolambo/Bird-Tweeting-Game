@@ -1,32 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BirdJump : MonoBehaviour
 {
-    [SerializeField] float velocity = 1;
-    private Rigidbody2D rb;
-    
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    
+    private Vector3 direction;
+    public float gravity = -9.8f;
+    public float strength = 10f;
+
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * velocity;
+            direction = Vector3.up * strength;
         }
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began)
+            {
+                direction = Vector3.up * strength;
+            }
+        }
+        direction.y += gravity * Time.deltaTime;
+        transform.position += direction * Time.deltaTime;
     }
-    
+
+    private void OnEnable()
+    {
+        Vector3 position = transform.position;
+        position.y = 0;
+        transform.position = position;
+        direction = Vector3.zero;
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Obstacle")) 
+        if (other.gameObject.tag == "Obstacle") 
         {
-            FindObjectOfType<GameManager>().GameOVer();
+            FindObjectOfType<GameManager>().GameOver();
         } 
-        else if (other.gameObject.CompareTag("Scoring")) 
+        else if (other.gameObject.tag == "Scoring") 
         {
             FindObjectOfType<GameManager>().IncreaseScore();
         }

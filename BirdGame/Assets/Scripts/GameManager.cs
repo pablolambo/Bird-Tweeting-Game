@@ -5,12 +5,15 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static bool isGameOver = true;
-    public BirdJump bird;
-
-    public TMP_Text scoreText;
+    public Bird bird;
+    
     public GameObject playButton;
     public TMP_Text GameOverText;
+    
     private int score;
+    public TMP_Text scoreText;
+    private int bread;
+    public TMP_Text breadText;
 
     private void Awake()
     {
@@ -61,5 +64,11 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+    }
+
+    public void IncreaseBreads()
+    {
+        bread++;
+        breadText.text = bread.ToString();
     }
 }

@@ -3,15 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacles : MonoBehaviour
+public class Breads : Obstacles
 {
-    public float speed = 5f;
-    protected float leftEdge = -11f;
-    protected float offset = 1f;
-
     private void Start()
     {
-        leftEdge = Camera.main.ScreenToWorldPoint(new Vector3(100, 0f, 0f)).x - offset;
+        leftEdge = Camera.main.ScreenToWorldPoint(new Vector3(-11, 0f, 0f)).x - offset;
     }
 
     private void Update()
@@ -23,4 +19,5 @@ public class Obstacles : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

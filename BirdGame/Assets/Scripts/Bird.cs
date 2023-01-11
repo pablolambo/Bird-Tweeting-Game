@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdJump : MonoBehaviour
+public class Bird : MonoBehaviour
 {
     private Vector3 direction;
     public float gravity = -9.8f;
@@ -44,14 +44,20 @@ public class BirdJump : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Obstacle") 
+        if (other.gameObject.CompareTag("Obstacle")) 
         {
-            FindObjectOfType<GameManager>().GameOver();
+            FindObjectOfType<GameManager>().GameOver(); // szuka obiektu po scenie w hierarchi
         } 
-        else if (other.gameObject.tag == "Scoring") 
+        else if (other.gameObject.CompareTag("Scoring")) 
         {
             FindObjectOfType<GameManager>().IncreaseScore();
             AudioManager.Instance.PlaySFX("Score");
+        }
+        else if (other.gameObject.CompareTag("Bread"))
+        {
+            FindObjectOfType<GameManager>().IncreaseBreads();
+            AudioManager.Instance.PlaySFX("Bread");
+            Destroy(other.gameObject);
         }
     }
 }

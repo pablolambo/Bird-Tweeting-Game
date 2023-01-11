@@ -10,6 +10,12 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+    private void Start()
+    {
+        musicSource.volume = 0.2f;
+        sfxSource.volume = 0.6f;
+    }
+
     public void PlayBackgroundMusic()
     {
         PlayMusic("BackgroundMusic");

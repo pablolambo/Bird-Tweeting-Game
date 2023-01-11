@@ -11,20 +11,27 @@ public class BirdJump : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if(!PauseMenu.isPaused)
         {
-            direction = Vector3.up * strength;
-        }
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Began)
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 direction = Vector3.up * strength;
+                AudioManager.Instance.PlaySFX("Jump");
             }
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    direction = Vector3.up * strength;
+                    AudioManager.Instance.PlaySFX("Jump");
+                }
+            }
+
+            direction.y += gravity * Time.deltaTime;
+            transform.position += direction * Time.deltaTime;
         }
-        direction.y += gravity * Time.deltaTime;
-        transform.position += direction * Time.deltaTime;
     }
 
     private void OnEnable()
@@ -44,6 +51,7 @@ public class BirdJump : MonoBehaviour
         else if (other.gameObject.tag == "Scoring") 
         {
             FindObjectOfType<GameManager>().IncreaseScore();
+            AudioManager.Instance.PlaySFX("Score");
         }
     }
 }

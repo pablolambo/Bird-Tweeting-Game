@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool isGameOver = true;
     public BirdJump bird;
 
     public TMP_Text scoreText;
@@ -19,8 +20,12 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
+        isGameOver = false;
+        PauseMenu.isPaused = false;
         score = 0;
         scoreText.text = score.ToString();
+        AudioManager audioManager = AudioManager.Instance;
+        audioManager.PlayBackgroundMusic();
         
         playButton.SetActive(false);
         GameOverText.gameObject.SetActive(false);
@@ -38,12 +43,16 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+        PauseMenu.isPaused = true;
         Time.timeScale = 0;
         bird.enabled = false;
+        AudioManager audioManager = AudioManager.Instance;
+        audioManager.StopBackgroundMusic();
     }
 
     public void GameOver()
     {
+        isGameOver = true;
         GameOverText.gameObject.SetActive(true);
         playButton.SetActive(true);
         Pause();

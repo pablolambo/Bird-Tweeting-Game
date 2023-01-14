@@ -7,13 +7,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     
+    
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
     private void Start()
     {
-        musicSource.volume = 0.2f;
-        sfxSource.volume = 0.6f;
+        musicSource.volume = PlayerPrefs.GetFloat("volumeMusic");
+        sfxSource.volume = PlayerPrefs.GetFloat("volumeSFX");
     }
 
     public void PlayBackgroundMusic()

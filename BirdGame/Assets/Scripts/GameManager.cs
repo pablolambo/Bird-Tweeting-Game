@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,22 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     private int bread;
     public TMP_Text breadText;
+    private int HighScore;
+    public TMP_Text HighScoreText;
+
+
+    private void Start()
+    {
+        HighScoreText.text = PlayerPrefs.GetInt("HighScore",0).ToString();
+        bread = PlayerPrefs.GetInt("BreadAmount",0);
+        LoadState();
+    }
+
+    private void LoadState()
+    {
+        PlayerPrefs.GetInt("BreadAmount",bread);
+        breadText.text = bread.ToString();
+    }
 
     private void Awake()
     {
@@ -64,11 +81,20 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+        if(score > PlayerPrefs.GetInt("HighScore",0))
+        {
+            PlayerPrefs.SetInt("HighScore",score);
+            HighScoreText.text = score.ToString();
+        }
     }
 
     public void IncreaseBreads()
     {
         bread++;
         breadText.text = bread.ToString();
+        PlayerPrefs.SetInt("BreadAmount",bread);
+        PlayerPrefs.Save();
     }
+    
+    
 }

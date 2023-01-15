@@ -12,7 +12,16 @@ public class UIController : MonoBehaviour
     private float musicVolumePrefs, sfxVolumePrefs;
     private int toggleMusicPrefs, toggleSfxPrefs;
 
-    
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
+    }
+
     public void ToggleMusic()
     {
         AudioManager.Instance.ToggleMusic();

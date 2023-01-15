@@ -7,32 +7,19 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public Slider musicSlider, sfxSlider;
-    public Toggle musicToggle, sfxToggle;
-    
     private float musicVolumePrefs, sfxVolumePrefs;
-    private int toggleMusicPrefs, toggleSfxPrefs;
 
-    private void Start()
-    {
-        
-    }
+    void Awake() 
+     { 
+         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+     }
 
     private void Update()
     {
-        
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
-
-    public void ToggleMusic()
-    {
-        AudioManager.Instance.ToggleMusic();
-        toggleMusicPrefs = AudioManager.Instance.musicSource ? 1 : 0;
-    }
-    public void ToggleSfx()
-    {
-        AudioManager.Instance.ToggleSFX();
-        toggleSfxPrefs = AudioManager.Instance.sfxSource ? 1 : 0;
-    }
-
 
     public void MusicVolume()
     {
@@ -47,29 +34,13 @@ public class UIController : MonoBehaviour
     {
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
         PlayerPrefs.SetFloat("SfxVolume", sfxSlider.value);
-
         PlayerPrefs.Save();
         LoadValues();
     }
 
-    private void LoadValues()
+    public void LoadValues()
     {
-        UpdateCheckboards();
-        UpdateSlider();
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("SfxVolume");
-        AudioListener.volume = musicSlider.value;
-    }
-    
-    public void UpdateCheckboards()
-    {
-        musicToggle.isOn = AudioManager.Instance.musicSource;
-        sfxToggle.isOn = AudioManager.Instance.sfxSource;
-    }
-    
-    public void UpdateSlider()
-    {
-        musicSlider.value = AudioManager.Instance.musicSource.volume;
-        sfxSlider.value = AudioManager.Instance.sfxSource.volume;
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
     }
 }

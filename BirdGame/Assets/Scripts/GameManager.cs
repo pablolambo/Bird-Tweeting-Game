@@ -95,6 +95,4 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("BreadAmount",bread);
         PlayerPrefs.Save();
     }
-    
-    
 }

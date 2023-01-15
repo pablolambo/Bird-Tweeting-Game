@@ -30,14 +30,18 @@ public class MainMenu : MonoBehaviour
       resolutionDropdown.RefreshShownValue();
    }
 
-   public void PlayGame()
+   public void PlayEasyGame()
    {
-      SceneManager.LoadScene("GameScene");
+      SceneManager.LoadScene("GameEasyScene");
+   }
+   
+   public void PlayHardGame()
+   {
+      SceneManager.LoadScene("GameHardScene");
    }
    
    public void QuitGame()
    {
-      Debug.Log("Quit button clicked");
       Application.Quit();
    }
 
